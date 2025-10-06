@@ -1,6 +1,6 @@
 <h1>ExpNo 5 : Implement Simple Hill Climbing Algorithm</h1> 
-<h3>Name:             </h3>
-<h3>Register Number:             </h3>
+<h3>Name: V.S.Sree Viveka           </h3>
+<h3>Register Number: 2305001031           </h3>
 <H3>Aim:</H3>
 <p>Implement Simple Hill Climbing Algorithm and Generate a String by Mutating a Single Character at each iteration </p>
 <h2> Theory: </h2>
@@ -42,59 +42,60 @@ Feedback is provided in terms of heuristic function
 ```python
 import random
 import string
+
 def generate_random_solution(answer):
-    l=len(answer)
+    l = len(answer)
     return [random.choice(string.printable) for _ in range(l)]
-def evaluate(solution,answer):
+
+def evaluate(solution, answer):
     print(solution)
-    target=list(answer)
-    diff=0
+    target = list(answer)
+    diff = 0
     for i in range(len(target)):
-        s=solution[i]
-        t=target[i]
-        #to calculate the "difference" between two strings, character by character.
-        #ord(s) - ord(t) calculates the difference between the ASCII values of the characters s and t.
-         #abs() takes the absolute value of this difference to ensure that it is non-negative. This is important because the difference could be negative if s is less than t in terms of ASCII value.
-         #The absolute value ensures that the difference is always positive or zero.
-        diff += abs(ord(s) - ord(t))    return diff
+        s = solution[i]
+        t = target[i]
+        # Calculate absolute ASCII difference
+        diff += abs(ord(s) - ord(t))
+    return diff  
+
 def mutate_solution(solution):
-    ind=random.randint(0,len(solution)-1)
-    solution[ind]=random.choice(string.printable)
+    ind = random.randint(0, len(solution) - 1)
+    solution[ind] = random.choice(string.printable)
     return solution
+
 def SimpleHillClimbing():
-    answer="Artificial Intelligence"
-    best=generate_random_solution(answer)
-    best_score=evaluate(best,answer)
+    answer = "SARASREE"
+    best = generate_random_solution(answer)
+    best_score = evaluate(best, answer)
+    
     while True:
-       print("Score:", best_score, " Solution: ", "".join(best))  
-       if best_score == 0:
-           break
-       new_solution = mutate_solution(list(best))
-       score = evaluate(new_solution, answer)
-       if score < best_score:
-           best = new_solution
-           best_score = score
+        print("Score:", best_score, "Solution:", "".join(best))
+        
+        if best_score == 0:
+            print("\nGoal Reached! Final Solution:", "".join(best))
+            break
+        
+        new_solution = mutate_solution(list(best))
+        score = evaluate(new_solution, answer)
+        
+        if score < best_score:
+            best = new_solution
+            best_score = score
+
 SimpleHillClimbing()
 ```
 
 <hr>
 <h2>Sample Input and Output</h2>
-<h2>Sample String:</h2> Artificial Intelligence
+<h2>Sample String:</h2> SARASREE
 <h2>Output:</h2>
-Score: 643  Solution :  8RzF:oG ]%;CPORRMe!zGvk<br>
-Score: 609  Solution :  8RzF:oG ]%;CPqRRMe!zGvk<br>
-Score: 604  Solution :  8RzF:oG ]%;CPqRRMe!zGqk<br>
-Score: 594  Solution :  8RzF:oG ]%;CPqRRWe!zGqk<br>
-Score: 551  Solution :  8RzF:oGK]%;CPqRRWe!zGqk<br>
-Score: 551  Solution :  8RzF:oGK]%;CPqRRWe!zGqk<br>
-Score: 551  Solution :  8RzF:oGK]%;CPqRRWe!zGqk<br>
-Score: 551  Solution :  8RzF:oGK]%;CPqRRWe!zGqk<br>
-Score: 551  Solution :  8RzF:oGK]%;CPqRRWe!zGqk<br>
+
+<img width="492" height="477" alt="Screenshot 2025-10-06 135020" src="https://github.com/user-attachments/assets/b6566b68-e382-4e46-ac06-5acaf3d4b4a3" />
+
 ....................................................<br>
 ..................................................<br>
 ................................................<br>
-Score: 1  Solution :  Artificial Intelligencf<br>
-Score: 1  Solution :  Artificial Intelligencf<br>
-Score: 1  Solution :  Artificial Intelligencf<br>
-Score: 1  Solution :  Artificial Intelligencf<br>
-Score: 0  Solution :  Artificial Intelligence<br>
+
+<img width="448" height="159" alt="Screenshot 2025-10-06 135051" src="https://github.com/user-attachments/assets/5bf6dc2c-94ac-443d-bdd5-fa858b1054e0" />
+<h1>Result:</h1>
+Thus the given python program for implement simple hill climbing algorithm was executed successfull.
